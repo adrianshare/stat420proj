@@ -1,0 +1,54 @@
+---
+title: "Project Proposal"
+output: html_document
+---
+
+
+**This document is in progress**
+
+Quick Notes:
+
+Build a model of touchdowns
+
+- Categorical Variable - `FantPos` {RB,WR,TE}
+- Number of observation - 622
+- Number of variables - 33
+
+
+Touchdowns are a major factor in the overall fantasy score for a player. A good model of touchdowns will allow us to pick good players based on projections for the upcoming season.  
+
+
+
+
+[source](https://www.pro-football-reference.com/years/2018/fantasy.htm)
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+fantasy18 <- read_csv("fantasy18.csv", 
+    skip = 1)
+```
+
+
+
+
+```{r}
+str(fantasy18)
+```
+
+
+
+
+
+
+
+
+Simple plot of total touchdowns vs targets as an initial verification
+
+
+```{r}
+fan_mod <- lm(TD_3~Tgt, data = fantasy18)
+plot(TD_3~Tgt, data = fantasy18)
+abline(fan_mod)
+```
+
+
